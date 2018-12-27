@@ -18,7 +18,7 @@ function getRandomArbitrary(min, max) {
 }
 
 function generate() {
-  return(getRandomArbitrary(-1,1), getRandomArbitrary(-1,1));
+  return [getRandomArbitrary(-1,1), getRandomArbitrary(-1,1)];
 }
 
 function isInCircle(coords) {
@@ -26,7 +26,7 @@ function isInCircle(coords) {
 }
 
 function findpi() {
-  const iterations = 1000000000;
+  const iterations = 10000000000;
   let inCircle = 0;
   for(let i = 0; i < iterations; i++) {
     if (isInCircle(generate())) {
@@ -36,3 +36,4 @@ function findpi() {
   const piOverFour = (inCircle/iterations);
   return (piOverFour*4);
 }
+console.log(findpi());
