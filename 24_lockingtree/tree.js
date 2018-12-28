@@ -7,11 +7,41 @@ class Node {
     this.locked = false;
   }
 
-  canBeLocked() {
-    const isParentLocked = (this.parent != null) && this.parent.isLocked();
-    const isLeftLocked = (this.left != null) && this.left.isLocked();
-    const isRightLocked = (this.right != null) && this.right.isLocked();
+  isAnyChildLocked() {
+    if (this.isLocked()) {
+      return true;
+    }    
 
+    let isLeftLocked = false;
+    if (this.left != null) {
+      isLeftLocked = this.left.isAnyChildLocked();
+    }
+
+    let isRightLocked = false;
+    if (this.right != null) {
+      isRightLocked = this.right.isAnyChildLocked();
+    }
+
+    return isLeftLocked || isRightLocked;
+  }
+
+  canBeLocked() {
+    let isParentLocked = false;
+    let nodeToCheck = this.parent;
+    while (nodeToCheck != null && !isParentLocked) {
+      isParentLocked = nodeToCheck.isLocked();
+      nodeToCheck = nodeToCheck.parent;
+    }
+
+    let isLeftLocked = false;
+    if (this.left != null) {
+      isLeftLocked = this.left.isAnyChildLocked();
+    }
+
+    let isRightLocked = false;
+    if (this.right != null) {
+      isRightLocked = this.right.isAnyChildLocked();
+    }
     return !isParentLocked && !isLeftLocked && !isRightLocked;
   }
 
