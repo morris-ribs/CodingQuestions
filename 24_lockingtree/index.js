@@ -14,11 +14,11 @@ tree.insert(new Node(20));
 tree.insert(new Node(-5));
 tree.insert(new Node(3));
 
-// console.log(node1.lock()); // expected true
-// console.log(node3.lock()); // expected false
-// console.log(tree.root.lock()); // expected false
-// console.log(node1.isLocked()); // expected true
-// console.log(node3.isLocked()); // expected false
+console.log(node1.lock()); // expected true
+console.log(node3.lock()); // expected false
+console.log(tree.root.lock()); // expected false
+console.log(node1.isLocked()); // expected true
+console.log(node3.isLocked()); // expected false
 // console.log(node1.unlock()); // expected true
 // console.log(node1.isLocked()); // expected false
 // console.log(node3.isLocked()); // expected false

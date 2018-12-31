@@ -1,48 +1,25 @@
 class Node {
-  constructor(data) {
+  constructor(data, left = null, right = null, parent = null) {
     this.data = data;
-    this.parent = null;
-    this.right = null;
-    this.left = null;
+    this.parent = parent;
+    this.right = right;
+    this.left = left;
     this.locked = false;
-  }
-
-  isAnyChildLocked() {
-    if (this.isLocked()) {
-      return true;
-    }    
-
-    let isLeftLocked = false;
-    if (this.left != null) {
-      isLeftLocked = this.left.isAnyChildLocked();
-    }
-
-    let isRightLocked = false;
-    if (this.right != null) {
-      isRightLocked = this.right.isAnyChildLocked();
-    }
-
-    return isLeftLocked || isRightLocked;
+    this.lockedDescendantsCount = 0;
   }
 
   canBeLocked() {
-    let isParentLocked = false;
-    let nodeToCheck = this.parent;
-    while (nodeToCheck != null && !isParentLocked) {
-      isParentLocked = nodeToCheck.isLocked();
-      nodeToCheck = nodeToCheck.parent;
+    if (this.lockedDescendantsCount > 0) {
+      return false;
     }
-
-    let isLeftLocked = false;
-    if (this.left != null) {
-      isLeftLocked = this.left.isAnyChildLocked();
+    let current = this.parent;
+    while (current != null) {
+      if (current.locked) {
+        return false;
+      }
+      current = current.parent;
     }
-
-    let isRightLocked = false;
-    if (this.right != null) {
-      isRightLocked = this.right.isAnyChildLocked();
-    }
-    return !isParentLocked && !isLeftLocked && !isRightLocked;
+    return true;
   }
 
   isLocked() {
@@ -50,15 +27,27 @@ class Node {
   }
 
   setLock(lock) {
-    if (this.canBeLocked()) {
-      this.locked = lock;
-      return true;
+    if (this.locked === lock) {
+      return false; // node already locked/unlocked
     }
-    return false;   
+    if (!this.canBeLocked()) {
+      return false;
+    }
+
+    this.locked = lock;
+    let current = this.parent;
+    while (current != null) {
+      if (lock) {
+        current.lockedDescendantsCount++;
+      } else {
+        current.lockedDescendantsCount--;
+      }
+      current = current.parent;
+    }
+    return true;
   }
 
   lock() {
-    if (this.locked) return false;
     return this.setLock(true);
   }
 
