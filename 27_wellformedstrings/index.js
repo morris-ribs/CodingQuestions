@@ -8,7 +8,7 @@ function match(c1, c2) {
 
 function isStringWellFormed(str) {
   const stack = [];
-  while(str.length > 0) {
+  while (str.length > 0) {
     const c = str[0];
     if (c === '[' || c === '(' || c === '{') {
       stack.push(c);
