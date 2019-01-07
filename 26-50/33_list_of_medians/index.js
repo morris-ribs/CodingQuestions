@@ -30,20 +30,16 @@ function listOfMedians(arr) {
   let orderedList = [];
   for (let i = 0; i < arr.length; i++) {
     const element = arr[i];
-    if (i === 0) {
+    const index = findIndexInOrderedList(orderedList, element);
+    if (index === 0) { 
+      orderedList.unshift(element);
+    } else if (index >= (orderedList.length - 1)) {
       orderedList.push(element);
     } else {
-      const index = findIndexInOrderedList(orderedList, element);
-      if (index === 0) { 
-        orderedList.unshift(element);
-      } else if (index >= (orderedList.length - 1)) {
-        orderedList.push(element);
-      } else {
-        const subArr1 = orderedList.slice(0, index);
-        const subArr2 = orderedList.slice(index, orderedList.length);
+      const subArr1 = orderedList.slice(0, index);
+      const subArr2 = orderedList.slice(index, orderedList.length);
 
-        orderedList = [...subArr1, element, ...subArr2];
-      }
+      orderedList = [...subArr1, element, ...subArr2];
     }
     
     const medianIndex = (orderedList.length/2);
@@ -60,4 +56,5 @@ function listOfMedians(arr) {
   return result;
 }
 
+console.log(listOfMedians([2, 1, 5, 7, 2, 0, 5]));
 console.log(listOfMedians([1, 2, 5, 7, 2, 0, 5]));
