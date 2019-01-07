@@ -1,6 +1,8 @@
 /**
- * The "naive" recursive solution runs very slowly due to repeated subcomputations. We can speed it up by using dynamic programming and storing the subcomputations in a 2D matrix. 
- * The index at i, j will contain the edit distance between s1[:i] and s2[:j]. Then, once we fill it up, we can return the value of the matrix at A[-1][-1].
+ * The "naive" recursive solution runs very slowly due to repeated subcomputations. 
+ * We can speed it up by using dynamic programming and storing the subcomputations in a 2D matrix. 
+ * The index at i, j will contain the edit distance between s1[i] and s2[j]. 
+ * Then, once we fill it up, we can return the value of the matrix at A[-1][-1].
  */
 function distance(s1, s2) {
   let x = s1.length + 1; // the length of the x-coordinate
