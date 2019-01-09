@@ -33,7 +33,7 @@ function findSecondLargestNode(largestNode, secondLargestNode = null) {
 // initialize tree
 //         10
 //        / \
-//       5   15
+//       5   15 <- this is the node to be returned
 //      /     \
 //     0       20
 //    / \
