@@ -19,4 +19,19 @@ function powerset(arr) {
   return result;
 }
 
-console.log(powerset([1,2,3])); // expected [[], [[1],[2],[3]], [[1,2],[2,3]], [1,2,3]]
+// official solution: recursive
+function powerSet(arr) {
+  if (arr.length === 0) {
+    return [[]];
+  }
+  const result = powerSet(arr.slice(1));
+  let aux = [];
+  for (let i = 0; i < result.length; i++) {
+    const subSet = result[i];
+    aux.push([[arr[0]], ...subSet]);
+  }
+  return [...result, ...aux];
+}
+
+// console.log(powerset([1,2,3])); // expected [[], [[1],[2],[3]], [[1,2],[2,3]], [1,2,3]]
+console.log(powerSet([1,2,3])); // expected [[], [[1],[2],[3]], [[1,2],[2,3]], [1,2,3]]
