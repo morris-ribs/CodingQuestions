@@ -25,10 +25,6 @@ class TreeNode {
   }
 }
 
-function insertOnTree() {
-
-}
-
 function outOfOrder(arr) {
   if (arr.length <= 1) {
     return 0;
