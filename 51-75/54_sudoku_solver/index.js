@@ -126,7 +126,7 @@ const board = [
   [EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, 5, EMPTY]
 ];
 
-//console.log(sudoku(board));
+console.log(sudoku(board));
 
 const boardHard = [
   [EMPTY, EMPTY, EMPTY, EMPTY, 4, EMPTY, EMPTY, EMPTY, 6],
