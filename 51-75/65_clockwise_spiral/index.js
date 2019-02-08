@@ -44,8 +44,8 @@ function matrixSpiralPrint(M) {
     remaining--;
     let possibleNextPosition = nextPosition(currentPosiion, currentDirection);
     if (shouldChangeDirection(M, possibleNextPosition.x, possibleNextPosition.y)) {
-      currentDirection = nextDirection(currentDirection)
-      currentPosiion = nextPosition(currentPosiion, currentDirection)
+      currentDirection = nextDirection(currentDirection);
+      currentPosiion = nextPosition(currentPosiion, currentDirection);
     } else {
       currentPosiion = possibleNextPosition; 
     }
