@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "collect.js": "^4.6.4"
+    "collect.js": "^4.6.4",
+    "collections": "^5.1.8"
   }
 }
