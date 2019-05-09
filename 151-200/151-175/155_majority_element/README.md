@@ -1,0 +1,7 @@
+# Find the majority element
+
+Given a list of elements, find the majority element, which appears more than half the time (> Math.floor(lst.length / 2.0)).
+
+You can assume that such element exists.
+
+For example, given [1, 2, 1, 1, 3, 4, 0], return 1.
