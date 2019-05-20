@@ -1,4 +1,4 @@
-function smallerCountsNaive(lst=[]) {
+function smallerCounts(lst=[]) {
   const result =[];
 
   for (let i = 0; i < lst.length; i++) {
@@ -17,4 +17,4 @@ function smallerCountsNaive(lst=[]) {
 }
 
 const arr = [3, 4, 9, 6, 1]; 
-console.log(smallerCountsNaive(arr)); // expected [1, 1, 2, 1, 0]
+console.log(smallerCounts(arr)); // expected [1, 1, 2, 1, 0]
